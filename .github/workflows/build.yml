@@ -16,7 +16,7 @@ jobs:
         run: mv target/AlwaysLoad-*.jar AlwaysLoad.jar
       - name: Create Release
         id: create_release
-        if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/master')
+        if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/main')
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -27,7 +27,7 @@ jobs:
           prerelease: false
       - name: Upload Release Asset
         id: upload-release-asset
-        if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/master')
+        if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/main')
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
